@@ -108,6 +108,25 @@ app.put("/Listings/:id", async (req, res) => {
         res.status(500).send("Internal Server Problem");
     }
 });
+app.delete("/Listings/:id", async (req, res) => {
+    try {
+        const deleteID = req.params.id;
+        
+        // Use await to make sure the deletion is completed before redirecting
+        const deleteListing = await Listing.findByIdAndDelete(deleteID);
+
+        if (!deleteListing) {
+            return res.status(404).send("Listing not found");
+        }
+
+        console.log(`Listing with ID ${deleteID} has been deleted`);
+        res.redirect("/Listing");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 app.listen(PORT, (err) => {
     if (err) {
         console.error("Some internal server error", err);

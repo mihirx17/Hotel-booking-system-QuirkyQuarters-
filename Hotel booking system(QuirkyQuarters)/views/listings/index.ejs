@@ -18,6 +18,11 @@
                 <form action="/Listings/<%= listing.id %>/edit" method="GET" style="display: inline;">
                     <button type="submit">Edit</button>
                 </form>
+                <form action="/Listings/<%= listing.id %>?_method=DELETE" method="POST" style="display: inline;">
+                   
+                    <button type="submit">Delete</button>
+                </form>
+                
             </li>
         <% } %>
     </ul>
