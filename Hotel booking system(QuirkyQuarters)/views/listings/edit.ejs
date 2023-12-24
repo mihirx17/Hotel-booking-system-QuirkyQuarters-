@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Listing</title>
+</head>
+<body>
+    <h1>Edit Listing</h1>
+    <h2><%= EditListings.id %></h2>
+    
+    <!-- Form for editing the listing -->
+    <form action="/Listings/<%= EditListings.id %>?_method=PUT" method="post">
+        <!-- Editable fields -->
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= EditListings.title %>" required>
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required><%= EditListings.description %></textarea>
+        <br>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" value="<%= EditListings.price %>" required>
+        <br>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" value="<%= EditListings.location %>" required>
+        <br>
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" value="<%= EditListings.country %>" required>
+        <br>
+       
+
+        <!-- Submit button -->
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>

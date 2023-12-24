@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All Listings</title>
 </head>
 <body>
     <h1>All listings</h1>
+    <form action="/Listing/new" method="GET">
+        <button>Create New Listing</button>
+    </form>
+    
     <ul>
-        <%  for(let listing of allListing){ %>
-            <li><a href="/Listings/<%= listing.id %>"><%= listing.title %> </a></li>
-
-
+        <% for(let listing of allListing) { %>
+            <li>
+                <a href="/Listings/<%= listing.id %>"><%= listing.title %> </a>
+                <form action="/Listings/<%= listing.id %>/edit" method="GET" style="display: inline;">
+                    <button type="submit">Edit</button>
+                </form>
+            </li>
         <% } %>
     </ul>
 </body>
 </html>
-       
