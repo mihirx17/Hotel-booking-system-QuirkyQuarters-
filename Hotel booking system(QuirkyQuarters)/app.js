@@ -3,15 +3,31 @@ const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 const PORT = 8000;
+const ip=require('ip');
 const fs=require('fs');
+const ejsMate=require("ejs-mate");
 const MongoUrl = "mongodb://127.0.0.1:27017/wanderlust";
+app.engine("ejs",ejsMate);
+app.use(express.static(path.join(__dirname, "public")));
+app.set('trust proxy', true);
+
 app.use(express.urlencoded({ extended: true }));
 var methodOverride = require('method-override');
 app.use(methodOverride('_method'));
+
+const ipv4Address = ip.address();
 app.use("/", (req, res, next) => {
-    const logData = `${req.method} ${new Date()}\n`;
-    fs.appendFileSync('log.txt', logData);
-    next();
+    const logData = `${req.method} ${req.url},|| pv4Address:${ipv4Address}|| ${new Date()}\n`;
+
+    // Use asynchronous file writing to avoid blocking the event loop
+    fs.appendFile('log.txt', logData, (err) => {
+        if (err) {
+            console.error(`Error writing to log file: ${err}`);
+        }
+
+        // Continue to the next middleware or route
+        next();
+    });
 });
 
 const Listing = require('./models/listing');

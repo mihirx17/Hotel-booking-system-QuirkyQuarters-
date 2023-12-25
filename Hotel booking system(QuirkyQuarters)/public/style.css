@@ -1,0 +1,9 @@
+.navbar {
+    position: static; /* Make the navbar static */
+    height: 80px; /* Set the desired height */
+    background-color: white;
+}
+.navbar-nav a.nav-link {
+    color: black;
+    
+}
