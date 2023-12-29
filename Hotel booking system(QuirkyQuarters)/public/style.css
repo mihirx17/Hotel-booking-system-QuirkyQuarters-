@@ -7,3 +7,155 @@
     color: black;
     
 }
+/* Reset some default styles */
+
+/* Footer styling */
+footer {
+    background-color: black;
+    color: red;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Social icons styling */
+.f-info-social i {
+    color: red;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for social icons */
+.f-info-social i:hover {
+    color: white;
+}
+
+/* Company name styling */
+.f-info div {
+    color: rgb(215, 193, 193);
+    margin-top: 10px;
+}
+
+/* Footer links styling */
+.f-info-link a {
+    color: rgb(221, 207, 207);
+    margin-right: 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for footer links */
+.f-info-link a:hover {
+    color: white;
+}
+
+
+/* Style the card container */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust space between columns */
+    margin: 20px 0; /* Add margin for spacing */
+}
+
+/* Style the individual cards */
+.card {
+    margin-bottom: 30px; /* Increase margin between rows */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+
+    /* Add box shadow for a subtle effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for the cards */
+.card:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Style the card image */
+.card-img-top {
+    width: 100%;
+    height: 200px; /* Set a fixed height for the image */
+    object-fit: cover;
+}
+
+/* Style the card body */
+.card-body {
+    padding: 15px;
+}
+
+/* Style the card text */
+.card-text {
+    font-size: 16px;
+}
+
+/* Make the title a bit bold */
+.card-title {
+    font-weight: bold;
+}
+
+/* Style the list item */
+.card-list-item {
+    font-size: 14px;
+}
+
+/* Remove text decoration for anchor tags and their children */
+a,
+a:hover,
+a:visited,
+a:active {
+    text-decoration: none;
+} 
+
+/* Add custom font */
+body {
+    font-family: 'Your Custom Font', sans-serif;
+}
+body {
+    background-color: #f2f2f2; /* Set a background color for the body */
+    font-family: Arial, sans-serif; /* Set a default font-family */
+    margin: 0; /* Remove default margin */
+}
+
+h1 {
+    color: black; /* Set the color of the heading */
+    color: #333;
+        text-align: center;
+    }
+
+
+form {
+    max-width: 600px; /* Set a maximum width for the form */
+    margin: 0 auto; /* Center the form horizontally */
+    background-color: white; /* Set a white background for the form */
+    padding: 20px; /* Add some padding to the form */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+label {
+    display: block; /* Make labels block elements for better spacing */
+    margin-bottom: 8px; /* Add spacing below each label */
+    color: black; /* Set the color of the labels */
+}
+
+input,
+textarea,
+button {
+    width: 100%; /* Make inputs and button full-width within the form */
+    padding: 8px; /* Add padding to inputs and button */
+    margin-bottom: 16px; /* Add spacing below inputs and button */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+button {
+    background-color: black; /* Set the background color of the button */
+    color: white; /* Set the text color of the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Add a smooth transition to the background color */
+}
+
+button:hover {
+    background-color: #333; /* Change background color on hover */
+}
