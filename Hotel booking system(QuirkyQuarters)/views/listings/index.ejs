@@ -1,7 +1,7 @@
 <% layout("/layout/boilerplate") -%>
 <body>
     <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
-        <% for(let listing of allListing) { %>
+        <% for (let listing of allListing) { %>
             <a href="/Listings/<%= listing.id %>">
                 <div class="card col" style="width: 20rem;">
                     <img src="<%= listing.image %>" class="card-img-top" alt="Listing Image">
@@ -9,7 +9,11 @@
                         <p class="card-text">
                             <%= listing.title %>
                             <br>
-                            &#8377; <%= listing.price.toLocaleString("en-IN") %>/Night
+                            <% if (listing.price !== null && listing.price !== undefined) { %>
+                                &#8377; <%= listing.price.toLocaleString("en-IN") %>/Night
+                            <% } else { %>
+                                Price information not available
+                            <% } %>
                         </p>
                     </div>
                 </div>
