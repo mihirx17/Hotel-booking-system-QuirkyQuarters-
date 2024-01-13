@@ -31,7 +31,9 @@ app.use("/", (req, res, next) => {
 });
 
 const Listing = require('./models/listing');
+const Review=require('./models/review');
 const { error } = require('console');
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -142,6 +144,32 @@ app.delete("/Listings/:id", async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+
+app.post('/Listings/:id/Review', async (req, res) => {
+    try {
+      const listingId = req.params.id;
+      const listing = await Listing.findById(listingId);
+  
+      if (!listing) {
+        return res.status(404).json({ error: 'Listing not found' });
+      }
+  let random=req.body.commnet;
+  console.log(random);
+      const newReview = new Review(req.body); // Assuming the entire review data is in req.body
+      listing.review.push(newReview);
+  
+      await newReview.save();
+      await listing.save();
+      console.log(newReview);
+  
+      // Assuming you want to send a response to the client after saving the review
+      res.status(200).json({ message: 'Review added successfully', review: newReview });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 
 app.listen(PORT, (err) => {
     if (err) {

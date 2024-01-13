@@ -17,21 +17,37 @@ const clientSchema = new Schema({
     price: Number
 });
 
-const Client = mongoose.model('Client', clientSchema); // Use 'Client' as the model name
+const coustomerSchema = new Schema({
+    name: String,
+    oder: [{
+        type: Schema.Types.ObjectId,
+        ref: "Client",
+    }],
+});
 
-const addClient = async () => {
+const Client = mongoose.model('Client', clientSchema);
+const Coustomer = mongoose.model('Coustomer', coustomerSchema);
+
+let addCoustomer = async () => {
     try {
-        const res = await Client.insertMany([
-            { item: 'samosa', price: 12 },
-            { item: 'chips', price: 32 },
-            { item: 'drink', price: 22 }, // Corrected 'dink' to 'drink'
-            { item: 'chocolate', price: 10 }
-        ]);
-        console.log('Added clients:', res);
-        
+        let newCoustomer = new Coustomer({
+            name: "Mihir",
+        });
+
+        let order1 = await Client.findOne({ item: "chips" });
+        let order2 = await Client.findOne({ item: "drink" });
+
+        newCoustomer.oder.push(order1._id, order2._id);
+
+        let result = await newCoustomer.save();
+
+        // Populate the "oder" field to get the items associated with the customer
+        let populatedResult = await Coustomer.findById(result._id).populate('oder');
+
+        console.log(populatedResult);
     } catch (error) {
-        console.error('Error adding clients:', error);
+        console.error('Error adding customer:', error);
     }
 };
 
-addClient(); // Call the addClient function to insert data
+addCoustomer();
